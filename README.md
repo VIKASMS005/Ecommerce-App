@@ -41,3 +41,15 @@ flutter run
 - Do not commit `.env`.
 - Commit `.env.example` instead.
 - `android/app/google-services.json` is ignored in this repo to keep Firebase config private.
+
+## Environment setup (recommended)
+
+1. Copy `.env.example` to `.env` in the project root:
+
+```powershell
+copy .env.example .env
+```
+
+2. Fill in the keys in `.env` using values from your Firebase console and Google Cloud.
+
+3. Keep `.env` and `android/app/google-services.json` private — they are ignored by git.
