@@ -67,6 +67,6 @@ flutter:
     - assets/images/order_success.png
     - assets/images/app_logo.png
     - assets/images/app_logo_512.png
+    - .env
 
-    
         
