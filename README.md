@@ -1,15 +1,25 @@
 # ShopEzee
 
-A Flutter shopping app demo that uses Firebase and Google Maps/Places APIs.
+A Flutter shopping app built with Firebase and Google Maps/Places APIs — product browsing, cart, checkout, order history, and address selection via map/autocomplete.
+
+## Tech stack
+
+ - Flutter (state management via provider)
+ - Firebase Authentication — email/password login
+ - Firebase Realtime Database — products, orders, and saved addresses
+ - Cloud Firestore — map/location data (GeoPoint for address picking)
+ - Firebase Storage — product images (camera/gallery upload)
+ - Google Maps & Places API — address autocomplete and map picking
 
 ## Features
 
-- Firebase authentication
-- Firestore database
-- Firebase storage
-- Google Maps and Places autocomplete
-- Product browsing, cart, and order checkout
-
+ - Firebase authentication
+ - Product browsing, cart, and order checkout
+ - Order history with expandable order details
+ - Saved delivery addresses with map-based selection
+ - Product image upload via device camera or gallery
+ - Google Places autocomplete for address search
+   
 ## Setup
 
 1. Install Flutter SDK and required tools.
