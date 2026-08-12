@@ -10,6 +10,7 @@ A Flutter shopping app built with Firebase and Google Maps/Places APIs — produ
  - Cloud Firestore — map/location data (GeoPoint for address picking)
  - Firebase Storage — product images (camera/gallery upload)
  - Google Maps & Places API — address autocomplete and map picking
+ - SQLite - Profile picture (camera/gallery upload)
 
 ## Features
 
@@ -19,6 +20,7 @@ A Flutter shopping app built with Firebase and Google Maps/Places APIs — produ
  - Saved delivery addresses with map-based selection
  - Product image upload via device camera or gallery
  - Google Places autocomplete for address search
+ - Profile picture can be taken via device camera or gallery and stored in device through SQLite
    
 ## Setup
 
