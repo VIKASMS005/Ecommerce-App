@@ -18,14 +18,17 @@ Widget buildTextField({
   required String label,
   required TextEditingController controller,
   required IconData icon,
+  TextInputType keyboardType = TextInputType.text,
+  String? Function(String?)? validator,
 }) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 16),
     child: TextFormField(
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(fontSize: 16),
+        labelStyle: const TextStyle(fontSize: 16),
         prefixIcon: Icon(icon),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
         enabledBorder: OutlineInputBorder(
@@ -33,6 +36,8 @@ Widget buildTextField({
         ),
       ),
       enableSuggestions: true,
+      validator: validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
     ),
   );
 }
@@ -263,36 +268,101 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                                   label: 'Full Name',
                                   controller: _fullNameController,
                                   icon: Icons.person_outline,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter your full name';
+                                    }
+                                    if (text.length < 2) {
+                                      return 'Name must be at least 2 characters';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 buildTextField(
                                   label: 'Contact Number',
                                   controller: _phoneNumberController,
                                   icon: Icons.call_outlined,
+                                  keyboardType: TextInputType.phone,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter your contact number';
+                                    }
+                                    if (text.length != 10 ||
+                                        !RegExp(r'^[0-9]+$').hasMatch(text)) {
+                                      return 'Enter a valid 10-digit phone number';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 buildTextField(
                                   label: 'House/Flat/Room No.',
                                   controller: _roomNoController,
                                   icon: Icons.home_outlined,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter house or room number';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 buildTextField(
                                   label: 'Area/Street',
                                   controller: _areaController,
                                   icon: Icons.add_road_outlined,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter area or street';
+                                    }
+                                    if (text.length < 3) {
+                                      return 'Area must be at least 3 characters';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 buildTextField(
                                   label: 'City',
                                   controller: _cityController,
                                   icon: Icons.location_city_outlined,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter city';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 buildTextField(
                                   label: 'State',
                                   controller: _stateController,
                                   icon: Icons.map_outlined,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter state';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 buildTextField(
                                   label: 'Pincode',
                                   controller: _pincodeController,
                                   icon: Icons.pin_drop_outlined,
+                                  keyboardType: TextInputType.number,
+                                  validator: (value) {
+                                    final text = value?.trim() ?? '';
+                                    if (text.isEmpty) {
+                                      return 'Please enter pincode';
+                                    }
+                                    if (text.length != 6 ||
+                                        !RegExp(r'^[0-9]+$').hasMatch(text)) {
+                                      return 'Enter a valid 6-digit pincode';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 16),
